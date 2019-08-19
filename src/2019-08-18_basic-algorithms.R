@@ -17,12 +17,13 @@ sapply(test_vector, fib)
 
 
 # Iterative binary search ------------------------------
+# note that this only works on sorted arrays 
 binary <- function(A, n, x) {
     p <- 1
     r <- n
     
     while (p <= r) {
-        q <- (p +r) %/% 2  # floor division 
+        q <- (p + r) %/% 2  # floor division 
         
         if (A[q] == x) {  # base case 1
             return(q)
@@ -43,11 +44,14 @@ binary <- function(A, n, x) {
 # test: 
 size <- 1000
 A <- c(rnorm(size), 1234)
+A <- sort(A)
+
 binary(A, size + 1, 1234)
 
 
 
 # Recursive binary search ------------------------------
+# note that this only works on sorted arrays 
 r_binary <- function(A, p, r, x) {
     # A is a vector (array)
     # p and r are indexes into the vector 
@@ -78,6 +82,7 @@ r_binary <- function(A, p, r, x) {
 # test: 
 size <- 100000
 A <- c(rnorm(size), 1234)
+A <- sort(A)
 r_binary(A, 1, size + 1, 1234)
 
 
