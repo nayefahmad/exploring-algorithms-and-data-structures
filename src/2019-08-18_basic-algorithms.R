@@ -16,6 +16,36 @@ test_vector <- 1:10
 sapply(test_vector, fib)
 
 
+# Iterative binary search ------------------------------
+binary <- function(A, n, x) {
+    p <- 1
+    r <- n
+    
+    while (p <= r) {
+        q <- (p +r) %/% 2  # floor division 
+        
+        if (A[q] == x) {  # base case 1
+            return(q)
+            
+        } else if (A[q] > x) {
+            r <- q - 1
+            
+        } else if (A[q] < x) {
+            p <- q + 1
+        }
+        
+    }
+    
+    return("not found")
+}
+
+
+# test: 
+size <- 1000
+A <- c(rnorm(size), 1234)
+binary(A, size + 1, 1234)
+
+
 
 # Recursive binary search ------------------------------
 r_binary <- function(A, p, r, x) {
